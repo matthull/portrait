@@ -2,7 +2,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe User, 'authentication' do
   it 'should authenticate a valid user' do
-    User.authenticate('jordan', 'password').should == users(:jordan)
+    User.authenticate('jordan', 'passWORD').should == users(:jordan)
   end
   
   it 'should not authenticate valid user with wrong password' do
@@ -29,6 +29,22 @@ describe User, 'validations' do
   
   it 'should have a name with valid characters' do
     User.new(name: 'INVALID').should have(1).error_on(:name)
+  end
+
+  it 'should have a password with at least 6 characters' do
+    User.new(password: 'aaBBB') .should have(1).error_on(:password)
+  end
+
+  it 'should have a password with at most 32 characters' do
+    User.new(password: ('a' * 16) + ('B' * 17)).should have(1).error_on(:password)
+  end
+
+  it 'should have at least one capital letter in password' do
+    User.new(password: 'lowercase').should have(1).error_on(:password)
+  end
+
+  it 'should have at least one lower case letter in password' do
+    User.new(password: 'UPPERCASE').should have(1).error_on(:password)
   end
   
   it 'should have a password hash' do
