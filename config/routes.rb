@@ -4,6 +4,9 @@ Portrait::Application.routes.draw do
   end
   
   resources :users
+
+  resources :sessions, only: [:new, :create]
+  get 'logout', to: 'sessions#destroy', as: :logout
   
   post '/'=>'sites#api',  as: 'api'
   get  '/'=>'home#index', as: 'root'  
