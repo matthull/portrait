@@ -7,6 +7,38 @@ body {
   font-size: 125%;
 }
 
+.header {
+  .logo {
+    width: 40%;
+  }
+  .session {
+    float: right;
+    width: 25%;
+    a {
+      color: #888888;
+    }
+  }
+}
+
+.session {
+  width: 50%;
+  float: right;
+  clear: both;
+}
+
+.flash {
+  .error {
+    color: red;
+    background-color: #F08080;
+    width: 50%;
+}
+  .notice {
+    color: green;
+    background-color: #9CBA7F;
+    width: 50%;
+  }
+}
+
 #Content {
   width: 900px;
   margin: 0 auto;
@@ -88,4 +120,10 @@ ul li {
   list-style: none;
   line-height: 1.5em;
   margin: 0;
+}
+
+.login form {
+  input {
+    display:block;
+  }
 }
