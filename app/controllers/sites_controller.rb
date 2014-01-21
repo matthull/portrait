@@ -1,7 +1,4 @@
 class SitesController < ApplicationController
-  before_filter      :user_required,  :only=>:api
-  skip_before_filter :admin_required, :only=>:api
-
   # GET /sites
   def index
     @sites = Site.order('created_at DESC').page params[:page]
