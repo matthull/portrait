@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :admin_required
+  skip_before_filter :user_required
 
   def create
     credentials = params[:credentials]

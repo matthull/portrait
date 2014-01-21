@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
-  before_filter :current_user, :admin_required
+  before_filter :current_user, :user_required
 
   protected
   def admin_required
     unless current_user && current_user.admin?
-      redirect_to new_session_path
+      if !current_user
+        redirect_to new_session_path
+      else
+        redirect_to :root, flash: {error: 'Access denied'}
+      end
     end
   end
 
