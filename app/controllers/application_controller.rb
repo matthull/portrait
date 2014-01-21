@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   def admin_required
     unless current_user && current_user.admin?
       if !current_user
-        redirect_to new_session_path
+        redirect_to login_path
       else
         redirect_to :root, flash: {error: 'Access denied'}
       end
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def user_required
     if !current_user
-      redirect_to new_session_path
+      redirect_to login_path
     end
   end
 

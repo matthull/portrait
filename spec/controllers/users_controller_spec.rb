@@ -5,7 +5,7 @@ describe UsersController do
   it 'redirects to login page when no one is logged in' do
     logout
     get :index
-    response.should redirect_to(new_session_path)
+    response.should redirect_to(login_path)
   end
   
   it 'redirects to home page if user is not an admin' do
