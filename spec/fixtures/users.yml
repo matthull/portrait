@@ -1,4 +1,4 @@
 jordan:
   name: jordan
-  password: password
+  password_hash: <%= BCrypt::Password.create('password') %>
   admin: true

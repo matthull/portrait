@@ -31,8 +31,8 @@ describe User, 'validations' do
     User.new(name: 'INVALID').should have(1).error_on(:name)
   end
   
-  it 'should have a password' do
-    User.new.should have(1).error_on(:password)
+  it 'should have a password hash' do
+    User.new.should have(1).error_on(:password_hash)
   end
   
   it 'should have a unique name' do
