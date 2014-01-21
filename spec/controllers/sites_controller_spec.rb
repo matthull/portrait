@@ -2,6 +2,11 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe SitesController do
   before(:each) { login_as :jordan }
+  it 'redirects to login page if no one is logged in' do
+    logout
+    get :index
+    response.should redirect_to(new_session_path)
+  end
 
   it 'handles / with GET' do
     get :index

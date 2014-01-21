@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_filter :admin_required
+  skip_filter :user_required
   
   # GET /users
   def index

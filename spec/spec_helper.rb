@@ -37,4 +37,8 @@ RSpec.configure do |config|
     @user = users(username)
     session[:user] = @user.id
   end
+
+  def logout
+    session.delete :user
+  end
 end

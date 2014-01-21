@@ -2,6 +2,18 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe UsersController do
   before(:each) { login_as :jordan }
+  it 'redirects to login page when no one is logged in' do
+    logout
+    get :index
+    response.should redirect_to(new_session_path)
+  end
+  
+  it 'redirects to home page if user is not an admin' do
+    logout
+    login_as :bob
+    get :index
+    response.should redirect_to(:root)
+  end
   
   it 'handles /users with GET' do
     get :index
